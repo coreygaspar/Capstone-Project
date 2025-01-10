@@ -178,7 +178,19 @@ MonoBehaviour:
     m_ActionId: a13bd65a-c79b-488c-a16b-7d4f8f546f03
     m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1680590887677678266}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8a2a4d0f-484e-4edd-81ca-e11622e323d5
     m_ActionName: Player/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -302,7 +314,11 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   groundDistance: 0
+  wallDistance: 0.2
+  ceilingDistance: 0.05
   _isGrounded: 0
+  _isOnWall: 0
+  _isOnCeiling: 0
 --- !u!70 &8613084607071610207
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

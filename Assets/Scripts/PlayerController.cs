@@ -13,22 +13,6 @@ public class PlayerController : MonoBehaviour
     TouchingDirections touchingDirections;
     [SerializeField]
 
-    // public float CurrentMoveSpeed 
-    // {
-    //     get
-    //     {
-    //         if(IsRunning && touchingDirections.IsOnWall)
-    //         {
-    //             return runSpeed;
-    //         }
-
-    //         else
-    //         {
-    //             return 0;
-    //         }
-    //     }
-    // }
-
 private bool _isRunning = false;
 
 public bool IsRunning
@@ -37,6 +21,7 @@ public bool IsRunning
     {
         return _isRunning;
     }
+    
     set
     {
         _isRunning = value;
@@ -67,19 +52,19 @@ private bool _isFacingRight = true;
 
 public bool IsFacingRight
 {
-    get => _isFacingRight;
+    get
+    {
+        return _isFacingRight;
+    }
+
     private set
     {
         if (_isFacingRight != value)
         {
             // Flip the sprite using flipX instead of scaling
-            GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
-            // Flip the collider's direction by adjusting the offset
-            CapsuleCollider2D capsuleCollider = GetComponent<CapsuleCollider2D>();
-            Vector2 colliderOffset = capsuleCollider.offset;
-            colliderOffset.x = -colliderOffset.x; // Flip the X offset
-            capsuleCollider.offset = colliderOffset;
+            transform.localScale *= new Vector2(-1, 1);
         }
+
         _isFacingRight = value;
     }
 }
@@ -146,20 +131,16 @@ public bool IsFacingRight
         // TODO Check if alive as well
         if(context.started && touchingDirections.IsGrounded)
         {
-            animator.SetTrigger(AnimationStrings.jump);
+            animator.SetTrigger(AnimationStrings.jumpTrigger);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
     }
 
-// Crouch Concept 
-
-    // public void OnCrouch(InputAction.CallbackContext context){
-    //     if(context.started){
-    //         IsCrouched = true;
-    //     }
-
-    //     else if(context.canceled){
-    //         IsCrouched = false;
-    //     }
-    // }
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            animator.SetTrigger(AnimationStrings.attackTrigger);
+        }
+    }
 }
