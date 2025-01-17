@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpImpulse = 10f;
     Vector2 moveInput;
     TouchingDirections touchingDirections;
+    Damageable damageable;
     [SerializeField]
 
 private bool _isRunning = false;
@@ -69,6 +70,22 @@ public bool IsFacingRight
     }
 }
 
+public bool CanMove 
+{
+    get
+    {
+        return animator.GetBool(AnimationStrings.canMove);
+    }
+}
+
+public bool IsAlive 
+{
+    get
+    {
+        return animator.GetBool(AnimationStrings.isAlive);
+    }
+}
+
     Rigidbody2D rb;
     Animator animator;
 
@@ -77,6 +94,7 @@ public bool IsFacingRight
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
+        damageable = GetComponent<Damageable>();
     }
 
     // Start is called before the first frame update
@@ -93,16 +111,28 @@ public bool IsFacingRight
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(moveInput.x * runSpeed, rb.velocity.y);
+        if(!damageable.LockVelocity)
+        {
+            rb.velocity = new Vector2(moveInput.x * runSpeed, rb.velocity.y);
+        }
+
         animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
     }
 
     public void OnMove(InputAction.CallbackContext context)
+{
+    if(IsAlive)
     {
         moveInput = context.ReadValue<Vector2>();
         IsRunning = moveInput != Vector2.zero;
         SetFacingDirection(moveInput);
     }
+    else
+    {
+        moveInput = Vector2.zero;
+        IsRunning = false;
+    }
+}
 
     private void SetFacingDirection(Vector2 moveInput)
     {
@@ -119,7 +149,7 @@ public bool IsFacingRight
     }
 
     public void OnRun(InputAction.CallbackContext context){
-        if (context.started){
+            if (context.started){
             IsRunning = true;
         }
         else if(context.canceled){
@@ -129,7 +159,7 @@ public bool IsFacingRight
 
     public void OnJump(InputAction.CallbackContext context){
         // TODO Check if alive as well
-        if(context.started && touchingDirections.IsGrounded)
+        if(context.started && touchingDirections.IsGrounded && CanMove)
         {
             animator.SetTrigger(AnimationStrings.jumpTrigger);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
@@ -142,5 +172,10 @@ public bool IsFacingRight
         {
             animator.SetTrigger(AnimationStrings.attackTrigger);
         }
+    }
+
+    public void OnHit(int damage, Vector2 knockback)
+    {
+        rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
     }
 }

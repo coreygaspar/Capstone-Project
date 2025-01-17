@@ -1,5 +1,124 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1581754681476945527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3137807390054040295}
+  - component: {fileID: 8698448579405721595}
+  - component: {fileID: 3312430325357588943}
+  m_Layer: 9
+  m_Name: SwordAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3137807390054040295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581754681476945527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4073165359905650503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8698448579405721595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581754681476945527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3053d7481c4b5db4dac835eddb9b1200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDmg: 15
+  knockback: {x: 3, y: 1}
+--- !u!60 &3312430325357588943
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581754681476945527}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.518272, y: -1.635308}
+      - {x: 2.481521, y: -1.0830324}
+      - {x: 2.1942105, y: -0.52596307}
+      - {x: 1.8986683, y: -0.18990695}
+      - {x: 1.1926656, y: 0.12669308}
+      - {x: 0.5383063, y: 0.15200138}
+      - {x: -0.16197684, y: 0.122857876}
+      - {x: -0.81800693, y: 0.0025291145}
+      - {x: -1.4993197, y: -0.3529888}
+      - {x: -0.6912967, y: -0.37716824}
+      - {x: -0.6651177, y: -0.29634085}
+      - {x: -0.36678544, y: -0.27860487}
+      - {x: -0.0034926832, y: -0.39595166}
+      - {x: 0.26877075, y: -0.60796165}
+      - {x: 0.43482623, y: -0.6661699}
+      - {x: 0.629475, y: -0.8174352}
+      - {x: 0.85453326, y: -1.2677726}
+      - {x: 0.886199, y: -1.4366561}
+      - {x: 0.78325033, y: -1.50936}
+      - {x: 0.80436444, y: -1.5274421}
+      - {x: 0.7753948, y: -1.5740281}
+      - {x: 0.74648404, y: -1.6519963}
+      - {x: 0.5680282, y: -1.9310302}
+      - {x: 1.9649523, y: -2.5318851}
+      - {x: 2.2724948, y: -2.4180112}
+      - {x: 2.4541457, y: -2.0735838}
+      - {x: 2.5051072, y: -1.8759192}
+  m_UseDelaunayMesh: 0
 --- !u!1 &8657532916817359275
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,7 +135,8 @@ GameObject:
   - component: {fileID: 4241358352148165859}
   - component: {fileID: 6157535320913808774}
   - component: {fileID: 8613084607071610207}
-  m_Layer: 0
+  - component: {fileID: 6165859975851790322}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,9 +153,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.4180758, y: -2.1361647, z: -0.021612827}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3137807390054040295}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2416404065541577730
@@ -78,7 +199,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: da546e44b693f3f46809f3eed5012840, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 8
-  jumpImpulse: 10
+  jumpImpulse: 8
   _isRunning: 0
 --- !u!114 &2598430879302789585
 MonoBehaviour:
@@ -234,11 +355,35 @@ MonoBehaviour:
     m_ActionId: ad24c838-a0ec-4d74-b633-bce1066816b2
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1680590887677678266}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnRun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 516e76b3-2cd3-4520-b257-507dae7a638f
     m_ActionName: Player/Run Left[/Keyboard/a]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1680590887677678266}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnRun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1eb36b4d-6332-4e15-b379-bd86693a8c85
     m_ActionName: Player/Run Right[/Keyboard/d]
   - m_PersistentCalls:
@@ -301,20 +446,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castFilter:
     useTriggers: 0
-    useLayerMask: 0
+    useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0
     useNormalAngle: 0
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 64
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  groundDistance: 0
-  wallDistance: 0.2
+  groundDistance: 0.05
+  wallDistance: 1
   ceilingDistance: 0.05
   _isGrounded: 0
   _isOnWall: 0
@@ -351,6 +496,38 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3159852, y: -1.2983131}
-  m_Size: {x: 1.4077349, y: 2.4251957}
+  m_Offset: {x: -0.3413918, y: -1.2955604}
+  m_Size: {x: 1.4514508, y: 2.4196901}
   m_Direction: 0
+--- !u!114 &6165859975851790322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8657532916817359275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fbef8e9a29b144db24a1dbe29ecc6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagableHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1680590887677678266}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _maxHealth: 100
+  _health: 100
+  _isAlive: 1
+  isInvincible: 0
+  invincibilityTime: 0.5
