@@ -7,8 +7,11 @@ using UnityEngine;
 public class Knight : MonoBehaviour
 {
     public float walkSpeed = 3f;
+    public float walkAcceleration = 3f;
+    public float maxSpeed = 3f;
     public float walkStopRate = 0.05f;
     public DetectionZone attackZone;
+    public DetectionZone cliffDetectionZone;
     Rigidbody2D rb;
     TouchingDirections touchingDirections;
     Animator animator;
@@ -66,6 +69,19 @@ public class Knight : MonoBehaviour
         }
     }
 
+    public float AttackCooldown 
+    {
+        get
+        {
+            return animator.GetFloat(AnimationStrings.attackCooldown);
+        }
+
+        private set
+        {
+            animator.SetFloat(AnimationStrings.attackCooldown, Mathf.Max(value, 0));
+        } 
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -77,10 +93,14 @@ public class Knight : MonoBehaviour
        // Update is called once per frame
     void Update()
     {
-        HasTarget = attackZone.detectedColliders.Count > 0;  
+        HasTarget = attackZone.detectedColliders.Count > 0; 
+       if(AttackCooldown > 0)
+       {
+            AttackCooldown -= Time.deltaTime; 
+       } 
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if(touchingDirections.IsGrounded && touchingDirections.IsOnWall)
         {
@@ -114,5 +134,13 @@ public class Knight : MonoBehaviour
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+    }
+
+    public void OnCliffDetected()
+    {
+        if(touchingDirections.IsGrounded)
+        {
+            FlipDirection();
+        }
     }
 }

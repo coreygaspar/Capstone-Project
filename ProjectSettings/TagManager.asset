@@ -18,9 +18,9 @@ TagManager:
   - Enemy
   - PlayerHitbox
   - EnemyHitbox
-  - 
-  - 
-  - 
+  - GroundDetection
+  - Pickup
+  - LevelMove
   - 
   - 
   - 

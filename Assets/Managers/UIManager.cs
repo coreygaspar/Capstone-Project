@@ -14,6 +14,18 @@ public class UIManager : MonoBehaviour
         gameCanvas = FindObjectOfType<Canvas>();
     }
 
+    void OnEnable()
+    {
+        CharacterEvents.characterDamaged += CharacterTookDamage;
+        CharacterEvents.characterHealed += CharacterHealed;
+    }
+
+    private void OnDisable()
+    {
+        CharacterEvents.characterDamaged -= CharacterTookDamage;
+        CharacterEvents.characterHealed -= CharacterHealed;
+    }
+
     public void CharacterTookDamage(GameObject character, int damageRecieved)
     {
         // Create text at character hit
@@ -30,7 +42,7 @@ public class UIManager : MonoBehaviour
          // Create text at character hit
         Vector3 spawnPosition = Camera.main.WorldToScreenPoint(character.transform.position);
 
-        TMP_Text tmpText = Instantiate(damageTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
+        TMP_Text tmpText = Instantiate(healthTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
 
         tmpText.text = healthRestored.ToString();
     }
