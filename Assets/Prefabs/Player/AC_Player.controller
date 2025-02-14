@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundToPlay: {fileID: 8300000, guid: 29d16d588424f224d83af037f0035d80, type: 3}
-  volume: 2
+  volume: 305.89
   playOnEnter: 1
   playOnExit: 0
   playAfterDelay: 0
