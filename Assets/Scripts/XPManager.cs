@@ -1,17 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class FinishPoint : MonoBehaviour
+public class XPManager : MonoBehaviour
 {
-
-    private void OnTriggerEnter2D(Collider2D exit)
-    {
-        if(exit.CompareTag("Player"))
-        {
-            SceneController.instance.NextLevel();
-        }
-    }
+    public int xpCount;
+    public Text xpText;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +16,6 @@ public class FinishPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        xpText.text = "Score: " + xpCount.ToString();
     }
 }

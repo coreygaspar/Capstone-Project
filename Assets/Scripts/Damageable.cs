@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Damageable : MonoBehaviour
 {
@@ -42,6 +43,8 @@ public class Damageable : MonoBehaviour
            if(_health <= 0)
            {
             IsAlive = false;
+            // Load the game with a delay
+            StartCoroutine(LoadGameOverSceneWithDelay(1f));
            } 
         }
     }
@@ -129,5 +132,12 @@ public class Damageable : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private IEnumerator LoadGameOverSceneWithDelay(float delay)
+    {
+        // Optionally, add a visual cue here for death (e.g., fade out effect)
+        yield return new WaitForSeconds(delay);  // Wait for the specified delay
+        SceneManager.LoadScene("GameOver"); // Ensure "GameOver" scene is in the build settings
     }
 }

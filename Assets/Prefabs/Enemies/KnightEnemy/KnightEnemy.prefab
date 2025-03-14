@@ -274,6 +274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 3
+  walkAcceleration: 3
+  maxSpeed: 3
   walkStopRate: 0.05
   attackZone: {fileID: 3895996200734798337}
   cliffDetectionZone: {fileID: 4115172517277315515}
@@ -346,8 +348,14 @@ MonoBehaviour:
   damagableHit:
     m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 100
-  _health: 100
+  damageableDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _maxHealth: 150
+  _health: 150
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.25
@@ -490,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3053d7481c4b5db4dac835eddb9b1200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDmg: 10
+  attackDmg: 20
   knockback: {x: 5, y: 2}
 --- !u!60 &2340666157182816835
 PolygonCollider2D:

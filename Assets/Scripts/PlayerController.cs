@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     TouchingDirections touchingDirections;
     Damageable damageable;
     [SerializeField]
+    public XPManager xpManager;
 
 private bool _isRunning = false;
 
@@ -177,5 +178,14 @@ public bool IsAlive
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("XP"))
+        {
+            Destroy(other.gameObject);
+            xpManager.xpCount += 100;
+        }
     }
 }

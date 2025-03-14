@@ -22,7 +22,7 @@ public class LevelLoader : MonoBehaviour
 
         while (!operation.isDone)
         {
-            float progress = Mathf.Clamp01(operation.progress / .9f);
+            float progress = Mathf.Clamp01(operation.progress /.9f);
             slider.value = progress;
 
             yield return null;
