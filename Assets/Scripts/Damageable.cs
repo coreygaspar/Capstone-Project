@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -39,13 +40,25 @@ public class Damageable : MonoBehaviour
            _health = value;
            healthChanged?.Invoke(_health, MaxHealth);
 
-           // If health is less than or equal to 0, character is no longer alive
-           if(_health <= 0)
+           // Used as a fix to make sure the other enemies aren't invincible
+           if(gameObject.CompareTag("Wizard") && _health <= 0)
+           {
+            IsAlive = false;
+           }
+
+           if(gameObject.CompareTag("Player") && _health <= 0)
            {
             IsAlive = false;
             // Load the game with a delay
             StartCoroutine(LoadGameOverSceneWithDelay(1f));
-           } 
+           }
+
+           if(gameObject.CompareTag("Enemy") && _health <= 0)
+           {
+            IsAlive = false;
+            // Load the game with a delay
+            StartCoroutine(LoadWinSceneWithDelay(1f));
+           }  
         }
     }
 
@@ -139,5 +152,12 @@ public class Damageable : MonoBehaviour
         // Optionally, add a visual cue here for death (e.g., fade out effect)
         yield return new WaitForSeconds(delay);  // Wait for the specified delay
         SceneManager.LoadScene("GameOver"); // Ensure "GameOver" scene is in the build settings
+    }
+
+    private IEnumerator LoadWinSceneWithDelay(float delay)
+    {
+        // Optionally, add a visual cue here for death (e.g., fade out effect)
+        yield return new WaitForSeconds(delay);  // Wait for the specified delay
+        SceneManager.LoadScene("Win"); // Ensure "Win" scene is in the build settings
     }
 }

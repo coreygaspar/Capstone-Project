@@ -186,7 +186,6 @@ public bool IsAlive
         {
             Destroy(other.gameObject);
             xpManager.xpCount += 100;
-            Debug.Log("Score has gone up by " + xpManager.xpCount + "points");
         }
     }
 }

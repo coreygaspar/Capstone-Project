@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4536305496499465940}
   m_Layer: 8
   m_Name: KnightEnemy
-  m_TagString: Untagged
+  m_TagString: Wizard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _maxHealth: 150
-  _health: 150
+  _health: 151
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.25
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3053d7481c4b5db4dac835eddb9b1200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDmg: 100
+  attackDmg: 20
   knockback: {x: 5, y: 2}
 --- !u!60 &2340666157182816835
 PolygonCollider2D:
