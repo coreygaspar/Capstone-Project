@@ -30,37 +30,34 @@ public class Damageable : MonoBehaviour
     private int _health = 100;
 
     public int Health
+{
+    get
     {
-        get
+        return _health;
+    }
+    set
+    {
+        _health = value;
+        healthChanged?.Invoke(_health, MaxHealth);
+
+        // Unified death logic
+        if (_health <= 0 && IsAlive)
         {
-            return _health;
-        }
-        set
-        {
-           _health = value;
-           healthChanged?.Invoke(_health, MaxHealth);
+            IsAlive = false; // this will also set animator bool
+            animator.SetTrigger("deathTrigger"); // trigger death animation
+            damageableDeath?.Invoke(); // optional: fire UnityEvent
 
-           // Used as a fix to make sure the other enemies aren't invincible
-           if(gameObject.CompareTag("Wizard") && _health <= 0)
-           {
-            IsAlive = false;
-           }
-
-           if(gameObject.CompareTag("Player") && _health <= 0)
-           {
-            IsAlive = false;
-            // Load the game with a delay
-            StartCoroutine(LoadGameOverSceneWithDelay(1f));
-           }
-
-           if(gameObject.CompareTag("Enemy") && _health <= 0)
-           {
-            IsAlive = false;
-            // Load the game with a delay
-            StartCoroutine(LoadWinSceneWithDelay(1f));
-           }  
+            if (CompareTag("Player"))
+            {
+                StartCoroutine(LoadGameOverSceneWithDelay(1f));
+            }
+            else if (CompareTag("Wizard"))
+            {
+                StartCoroutine(LoadWinSceneWithDelay(1f));
+            }
         }
     }
+}
 
     [SerializeField]
     private bool _isAlive = true;

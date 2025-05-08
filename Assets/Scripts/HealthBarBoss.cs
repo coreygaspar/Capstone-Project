@@ -13,7 +13,7 @@ public class HealthBarBoss : MonoBehaviour
 
     private void Awake()
     {
-        GameObject boss = GameObject.FindGameObjectWithTag("Enemy");
+        GameObject boss = GameObject.FindGameObjectWithTag("Wizard");
         bossDamageable = boss.GetComponent<Damageable>();
 
         if(boss == null) 
