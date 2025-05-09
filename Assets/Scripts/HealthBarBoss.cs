@@ -27,7 +27,7 @@ public class HealthBarBoss : MonoBehaviour
         bossDamageable.healthChanged.AddListener(OnBossHealthChanged);
     }
 
-    private void OnDisable()
+    private void OnSDSDisable()
     {
         bossDamageable.healthChanged.RemoveListener(OnBossHealthChanged);
     }
