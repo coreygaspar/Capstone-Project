@@ -44,7 +44,6 @@ public class Damageable : MonoBehaviour
         if (_health <= 0 && IsAlive)
         {
             IsAlive = false; // this will also set animator bool
-            animator.SetTrigger("deathTrigger"); // trigger death animation
             damageableDeath?.Invoke(); // optional: fire UnityEvent
 
             if (CompareTag("Player"))
