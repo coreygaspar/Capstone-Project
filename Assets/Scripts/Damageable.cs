@@ -124,12 +124,20 @@ public class Damageable : MonoBehaviour
             damagableHit?.Invoke(damage, knockback);
             CharacterEvents.characterDamaged.Invoke(gameObject, damage);
 
+            StartCoroutine(UnlockVelocityAfterDelay(0.2f));
+
             return true;
         }
 
         // Unable to be hit
         return false;
     }
+
+    private IEnumerator UnlockVelocityAfterDelay(float delay)
+{
+    yield return new WaitForSeconds(delay);
+    LockVelocity = false;
+}
 
     public bool Heal(int healthRestore)
     {

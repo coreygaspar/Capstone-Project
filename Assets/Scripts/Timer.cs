@@ -68,7 +68,9 @@ public class Timer : MonoBehaviour
     public void StartTimer(float duration)
     {
         elapsedTime = duration;
-        timerText.gameObject.SetActive(true);  // Show the timer text
+        timerText.color = Color.white;       // reset to white
+        isColorChanging = false;             // allow color to change again
+        timerText.gameObject.SetActive(true);
     }
 
     // Coroutine to change color with delay
@@ -81,9 +83,12 @@ public class Timer : MonoBehaviour
     // Coroutine to reset timer and hide text
     private IEnumerator ResetTimerAndHideText()
     {
-        timerText.gameObject.SetActive(false); // Hide the text
-        yield return new WaitForSeconds(1f);  // Wait for a short delay
-        elapsedTime = initialTime; // Reset to initial time
+        timerText.color = Color.white;       
+        isColorChanging = false;
+        timerText.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        elapsedTime = initialTime;
+        resetCoroutine = null;
     }
 
     // Optional: Method to manually show the timer again if needed
