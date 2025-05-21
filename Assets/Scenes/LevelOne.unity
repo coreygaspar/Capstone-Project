@@ -19460,14 +19460,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8698448579405721595, guid: 5ec8aff133d4c5744865a8e6b23d6642, type: 3}
-      propertyPath: knockback.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698448579405721595, guid: 5ec8aff133d4c5744865a8e6b23d6642, type: 3}
-      propertyPath: knockback.y
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3053d7481c4b5db4dac835eddb9b1200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDmg: 20
-  knockback: {x: 5, y: 1}
+  attackDmg: 30
+  knockback: {x: 5, y: 2}
 --- !u!60 &6795364998664432118
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3053d7481c4b5db4dac835eddb9b1200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDmg: 20
+  attackDmg: 25
   knockback: {x: 2, y: 1}
 --- !u!60 &3312430325357588943
 PolygonCollider2D:
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3053d7481c4b5db4dac835eddb9b1200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDmg: 20
+  attackDmg: 25
   knockback: {x: 5, y: 1}
 --- !u!60 &2213081695018637119
 PolygonCollider2D:
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3053d7481c4b5db4dac835eddb9b1200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDmg: 20
+  attackDmg: 25
   knockback: {x: 2, y: 1}
 --- !u!60 &4839297792258328835
 PolygonCollider2D:

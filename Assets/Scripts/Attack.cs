@@ -52,19 +52,19 @@ public class Attack : MonoBehaviour
     // Method to activate the power-up (called by the DamagePowerUp script)
     public void ActivatePowerUp(int damageBoost, float duration)
     {
-        if (!powerUpActive)
-        {
-            powerUpActive = true;
-            boostedAttackDmg = attackDmg + damageBoost; // Increase damage by power-up value
-            Debug.Log("Power-Up Activated! New damage: " + boostedAttackDmg);
+         // Always stop any running power-up timer
+    if (powerUpCoroutine != null)
+    {
+        StopCoroutine(powerUpCoroutine);
+    }
 
-            // Start the power-up timer
-            if (powerUpCoroutine != null)
-            {
-                StopCoroutine(powerUpCoroutine); // Stop any previous timers
-            }
-            powerUpCoroutine = StartCoroutine(DeactivatePowerUpAfterDuration(duration));
-        }
+    // Apply the new boosted damage
+    boostedAttackDmg = attackDmg + damageBoost;
+    powerUpActive = true;
+    Debug.Log("Power-Up Activated! New damage: " + boostedAttackDmg);
+
+    // Start a new timer
+    powerUpCoroutine = StartCoroutine(DeactivatePowerUpAfterDuration(duration));
     }
 
     // Coroutine to reset damage after power-up duration ends

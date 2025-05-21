@@ -24,10 +24,10 @@ public class DamageScript : MonoBehaviour
     // Triggered when the player collides with the power-up
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !isPowerUpActive)
-        {
-            ActivatePowerUp();
-        }
+        if (other.CompareTag("Player"))
+    {
+        ActivatePowerUp();
+    }
     }
 
     // Activate the power-up and start the timer
@@ -35,26 +35,25 @@ public class DamageScript : MonoBehaviour
     {
         isPowerUpActive = true;
 
-        // Activate power-up on all player's attack scripts
-        foreach (Attack attack in playerAttacks)
-        {
-            attack.ActivatePowerUp(damageBoost, duration);
-        }
+    // Reapply power-up on all player's attack scripts
+    foreach (Attack attack in playerAttacks)
+    {
+        attack.ActivatePowerUp(damageBoost, duration); // Make sure this method resets the boost timer in Attack.cs
+    }
 
-        // Show the timer and start it
-        if (timer != null)
-        {
-            timer.ShowTimer();  // Show the timer on the UI
-            timer.StartTimer(duration);  // Start the timer for the power-up duration
-        }
+    // Restart timer on UI
+    if (timer != null)
+    {
+        timer.ShowTimer();
+        timer.StartTimer(duration); // This should restart the timer UI
+    }
 
-        // Disable the power-up object so it can’t be picked up again
-        gameObject.SetActive(false);
+    // Reset coroutine to extend the duration
+    StopAllCoroutines(); // Important: cancel previous coroutine
+    StartCoroutine(DeactivatePowerUp());
 
-        // Start a coroutine to deactivate the power-up after the duration
-        StartCoroutine(DeactivatePowerUp());
-
-        // DisableOtherDamagePickups();
+    // Optionally: Disable this power-up object (if you don’t want multiple stacks)
+    gameObject.SetActive(false);
     }
 
     // Coroutine to deactivate the power-up after the specified duration
